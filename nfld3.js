@@ -79,29 +79,7 @@ $(function() {
 
   }
 
-  function drawLabels(data, key) {
-    var text = svg.selectAll('text').data(data)
-
-    // update
-    text.transition()
-      .text( function(d) { return d[key] } )
-      .attr('x', options.originX - 40)
-      .attr('y', function(d, i){ return i * options.stepY + options.originY } )
-
-    // enter
-    text.enter().append('text')
-      .text( function(d) { return d[key] } )
-      .attr('opacity', 0)
-      .transition().duration(options.duration)
-      .attr('opacity', 1)
-      .attr('x', options.originX - 40)
-      .attr('y', function(d, i){ return i * options.stepY + options.originY } )
-
-    // exit
-    text.exit().transition().duration(500).attr('r', 0).remove()
-
-  }
-
+  // Deferred object post processing
   function addImage(data) {
     for(i=0; i < data.length; i++)
       data[i]['image'] = 'http://i.nflcdn.com/static/site/6.1/img/logos/svg/teams-matte-mascot/' + data[i]['team'].split(' ').pop() + '.svg';
@@ -156,6 +134,7 @@ $(function() {
     return resultsList
   }
 
+  // Function tests the Update d3 by deletin
   function oneAtATime(data, interval) {
     setInterval(function() {
       data = data.splice(1, data.length - 1)
@@ -167,6 +146,39 @@ $(function() {
     drawCircles(data, 'avg_ticket')
     drawLabels(data, 'team')
     // drawLogos(data, 'image')
+  }
+
+  function setEvents(data) {
+    $('button#nfc_north').click( function(){
+        draw(filterData(data, 'team', nfc_north))
+    })
+    $('button#nfc_south').click( function(){
+        draw(filterData(data, 'team', nfc_south))
+    })
+    $('button#nfc_east').click( function(){
+        draw(filterData(data, 'team', nfc_east))
+    })
+    $('button#nfc_west').click( function(){
+        draw(filterData(data, 'team', nfc_west))
+    })
+    $('button#afc_north').click( function(){
+        draw(filterData(data, 'team', afc_north))
+    })
+    $('button#afc_south').click( function(){
+        draw(filterData(data, 'team', afc_south))
+    })
+    $('button#afc_east').click( function(){
+        draw(filterData(data, 'team', afc_east))
+    })
+    $('button#afc_west').click( function(){
+        draw(filterData(data, 'team', afc_west))
+    })
+    $('button#avg_ticket').click( function(){
+        draw(filterData(data, 'avg_ticket', afc_west))
+    })
+    $('button#fci').click( function(){
+        draw(filterData(data, 'fci', afc_west))
+    })
   }
 
   function animate(data) {
@@ -253,12 +265,23 @@ $(function() {
 
   }
 
-  // get initial set of data and render it
-  $.getJSON('nfl_ticket_data.json', function(data) {
-    draw(filterData(data, 'team', afc_north))
-    setTimeout(function(){draw(filterData(data, 'team', nfc_north))}, 2000)
-    // items = addImage(data)
-    // drawCircles(items, 'avg_ticket')
-  })
+  function getNFLData(url) {
+    var def = $.Deferred()
+
+    $.getJSON('nfl_ticket_data.json')
+      .done(function(data) {
+        addImage(data)
+        setEvents(data)
+        draw(data)
+      })
+
+    return def
+  }
+
+
+  getNFLData('nfl_ticket_data.json')
+
+//   setTimeout(function(){draw(filterData(data, 'team', nfc_north))}, 2000)
+
 
 })
