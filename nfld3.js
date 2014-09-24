@@ -1,7 +1,7 @@
 $(function() {
   var options = {
     width: 3000,
-    height: 2000,
+    height: 4000,
     originX: 100,
     originY: 100,
     stepX: 70,
@@ -82,26 +82,31 @@ $(function() {
   // Deferred object post processing
   function addImage(data) {
     for(i=0; i < data.length; i++)
-      data[i]['image'] = 'http://i.nflcdn.com/static/site/6.1/img/logos/svg/teams-matte-mascot/' + data[i]['team'].split(' ').pop() + '.svg';
+      data[i]['image'] = 'http://i.nflcdn.com/static/site/6.1/img/logos/helmet-left-115x93/' + data[i]['abbr'].toUpperCase() + '.png'
+      // data[i]['image'] = 'http://i.nflcdn.com/static/site/6.1/img/logos/svg/teams-matte-mascot/' + data[i]['team'].split(' ').pop().toLowerCase() + '.svg';
+      // http://i.nflcdn.com/static/site/6.3/img/logos/teams-matte-80x53/NYG.png"
+      // http://i.nflcdn.com/static/site/6.3/img/logos/helmet-left-115x93/GB.png
   }
 
   // TODO: this also connects the image tag to the entire data set. Should you do this with just
+  //@key is the data dictionary's key that holds the src image
   function drawLogos(data, key) {
     // implicit input here
-    var images = svg.selectAll('img').data(data, function(d) { return d[key] })
+    var images = svg.selectAll('image').data(data, function(d) { return d[key] })
 
     // update
     images.transition()
-      .attr('href', function(d){ return d })
-      .attr('x', function(d, i){ return i * options.stepX + options.originX } )
-      .attr('y', options.originY - 80)
+      .attr('src', function(d){ return d[key] })
+      .attr('x', options.originX + 300)
+      .attr('y', function(d, i) { return i * options.stepY + options.originY })
 
     // enter
-    images.enter().append('img')
-      .attr('href', function(d){ return d })
+    images.enter().append('image')
+      .attr('xlink:href', function(d){ return d[key] })
       .transition().duration(options.duration)
-      .attr('x', function(d, i){ return i * options.stepX + options.originX } )
-      .attr('y', options.originY - 40)
+      .attr('width', '115px').attr('height', '93px')
+      .attr('x', options.originX + 300)
+      .attr('y', function(d, i) { return i * options.stepY + options.originY})
 
     // exit
     images.exit().transition().duration(500).attr('r', 0).remove()
@@ -145,7 +150,7 @@ $(function() {
   function draw(data) {
     drawCircles(data, 'avg_ticket')
     drawLabels(data, 'team')
-    // drawLogos(data, 'image')
+    drawLogos(data, 'image')
   }
 
   function setEvents(data) {
