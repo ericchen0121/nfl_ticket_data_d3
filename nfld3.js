@@ -1,11 +1,11 @@
 $(function() {
   var options = {
     width: 3000,
-    height: 4000,
+    height: 4500,
     originX: 100,
     originY: 100,
-    stepX: 70,
-    stepY: 70,
+    stepX: 150,
+    stepY: 125,
     animateStart: 3000,
     animateInterval: 2000,
     duration: 1500
@@ -29,49 +29,55 @@ $(function() {
                         .attr('height', options.height)
 
   // this renders circles according to the key in the data
-  function drawCircles(data, key) {
+  function drawCircles(data, key, xOffset) {
       var circles = svg.selectAll('circle').data(data)
 
       // d3 update
-      circles.transition()
-        .attr('cx', options.originX + 150)
+      circles
+        // initial position
+        // INITIAL POSITION HERE
+        .attr('cy', 0).attr('opacity', 0)
+        // transitioned position
+        .transition().duration(options.duration)
+        .attr('cx', options.originX + xOffset * options.stepX)
         .attr('cy', function(d, i){ return i * options.stepY + options.originY } )
         // TODO: resize function to normalize the values
-        .attr('r', function(d){ return d[key] / 4 } )
-        .style('fill', 'black')
+        .attr('r', function(d){ return d[key] / 3 } )
+        .attr('opacity', 1)
+        .style('fill', 'red')
 
       // d3 enter
       circles.enter().append('circle')
                         .attr('r', 0)
                         .transition().duration(options.duration)
-                        .attr('cy', function(d, i){ return i * 70 + options.originY} )
-                        .attr('cx', options.originX + 150)
+                        .attr('cx', options.originX + xOffset * options.stepX)
+                        .attr('cy', function(d, i){ return i * options.stepY + options.originY } )
                         .attr('r', function(d){ return d.avg_ticket / 4 } )
                         // TODO: fill according to Hex value of team color
                         .style('fill', 'black')
 
       // d3 exit
-      circles.exit().transition().duration(500).attr('r', 0).remove()
+      circles.exit().transition().duration(500).attr('opacity', 0).remove()
 
 
   }
 
-  function drawLabels(data, key) {
-    var text = svg.selectAll('text').data(data)
+  function drawLabels(data, key, xOffset) {
+    var text = svg.selectAll('text.' + key).data(data)
 
     // update
     text.transition()
       .text( function(d) { return d[key] } )
-      .attr('x', options.originX - 40)
+      .attr('x', options.originX + xOffset * options.stepX)
       .attr('y', function(d, i){ return i * options.stepY + options.originY } )
 
     // enter
-    text.enter().append('text')
+    text.enter().append('text').classed(key, true)
       .text( function(d) { return d[key] } )
       .attr('opacity', 0)
       .transition().duration(options.duration)
       .attr('opacity', 1)
-      .attr('x', options.originX - 40)
+      .attr('x', options.originX + xOffset * options.stepX)
       .attr('y', function(d, i){ return i * options.stepY + options.originY } )
 
     // exit
@@ -90,36 +96,28 @@ $(function() {
 
   // TODO: this also connects the image tag to the entire data set. Should you do this with just
   //@key is the data dictionary's key that holds the src image
-  function drawLogos(data, key) {
+  function drawLogos(data, key, xOffset) {
     // implicit input here
     var images = svg.selectAll('image').data(data, function(d) { return d[key] })
 
     // update
-    images.transition()
+    images
+      .transition().duration(options.duration)
       .attr('src', function(d){ return d[key] })
-      .attr('x', options.originX + 300)
-      .attr('y', function(d, i) { return i * options.stepY + options.originY })
+      .attr('x', options.originX + xOffset * options.stepX)
+      .attr('y', function(d, i) { return i * options.stepY + options.originY - .4 * options.stepY })
 
     // enter
     images.enter().append('image')
       .attr('xlink:href', function(d){ return d[key] })
       .transition().duration(options.duration)
+      // TODO: remove hardcoded widths/heights
       .attr('width', '115px').attr('height', '93px')
-      .attr('x', options.originX + 300)
-      .attr('y', function(d, i) { return i * options.stepY + options.originY})
+      .attr('x', options.originX + xOffset * options.stepX)
+      .attr('y', function(d, i) { return i * options.stepY + options.originY - .4 * options.stepY })
 
     // exit
-    images.exit().transition().duration(500).attr('r', 0).remove()
-
-    //update
-    // images.transition()
-    //   .attr('x', function(d, i){ return i * options.stepX + options.originX } )
-    //   .attr('y', options.originY - 50)
-    //   .property
-
-    //enter
-
-    //exit
+    images.exit().transition().duration(500).attr('opacity', 0).remove()
 
   }
 
@@ -148,9 +146,10 @@ $(function() {
   }
 
   function draw(data) {
-    drawCircles(data, 'avg_ticket')
-    drawLabels(data, 'team')
-    drawLogos(data, 'image')
+    drawCircles(data, 'avg_ticket', 1)
+    drawLabels(data, 'team', 1.3)
+    drawLogos(data, 'image', 0)
+    drawLabels(data, 'avg_ticket', 2.4)
   }
 
   function setEvents(data) {
