@@ -36,7 +36,7 @@ $(function() {
       circles
         // initial position
         // INITIAL POSITION HERE
-        .attr('cy', 0).attr('opacity', 0)
+        // .attr('cy', 0).attr('opacity', 0)
         // transitioned position
         .transition().duration(options.duration)
         .attr('cx', options.originX + xOffset * options.stepX)
@@ -44,7 +44,7 @@ $(function() {
         // TODO: resize function to normalize the values
         .attr('r', function(d){ return d[key] / 3 } )
         .attr('opacity', 1)
-        .style('fill', 'red')
+        .style('fill', function(d) { return d.colors[0] } )
 
       // d3 enter
       circles.enter().append('circle')
@@ -54,7 +54,7 @@ $(function() {
                         .attr('cy', function(d, i){ return i * options.stepY + options.originY } )
                         .attr('r', function(d){ return d.avg_ticket / 4 } )
                         // TODO: fill according to Hex value of team color
-                        .style('fill', 'black')
+                        .style('fill', function(d) { return d.colors[0] })
 
       // d3 exit
       circles.exit().transition().duration(500).attr('opacity', 0).remove()
@@ -66,10 +66,23 @@ $(function() {
     var text = svg.selectAll('text.' + key).data(data)
 
     // update
-    text.transition()
-      .text( function(d) { return d[key] } )
+    text.transition().duration(options.duration / 2)
       .attr('x', options.originX + xOffset * options.stepX)
       .attr('y', function(d, i){ return i * options.stepY + options.originY } )
+
+      // .text( function(d) { return d[key] } )
+      .tween('text', function(d) {
+        var interpolator = d3.interpolate(this.textContent, d[key])
+
+        return function(t){
+          if(typeof d[key] == 'number'){
+            this.textContent = interpolator(t).toFixed(2)
+          }
+          else{
+            this.textContent = interpolator(t)
+          }
+        }
+      })
 
     // enter
     text.enter().append('text').classed(key, true)
@@ -102,6 +115,8 @@ $(function() {
 
     // update
     images
+      .attr('x', 0)
+      .attr('y', function(d, i) { return i * options.stepY + options.originY - .4 * options.stepY })
       .transition().duration(options.duration)
       .attr('src', function(d){ return d[key] })
       .attr('x', options.originX + xOffset * options.stepX)
@@ -147,9 +162,9 @@ $(function() {
 
   function draw(data) {
     drawCircles(data, 'avg_ticket', 1)
-    drawLabels(data, 'team', 1.3)
+    drawLabels(data, 'team', 1.4)
     drawLogos(data, 'image', 0)
-    drawLabels(data, 'avg_ticket', 2.4)
+    drawLabels(data, 'avg_ticket', 2.5)
   }
 
   function setEvents(data) {

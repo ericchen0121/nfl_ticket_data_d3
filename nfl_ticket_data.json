@@ -14,7 +14,8 @@
     "cap":22.00,
     "FCI":641.50,
     "FCI_pct_change":38.7,
-    "abbr": "sf"
+    "abbr": "sf",
+    "colors": ["#AF1E2C", "#AF1E2C"]
   },
   {
     "team":"Dallas Cowboys",
@@ -31,7 +32,8 @@
     "cap":20.00,
     "FCI":634.80,
     "FCI_pct_change":0.0,
-    "abbr": "dal"
+    "abbr": "dal",
+    "colors": ["#002244", "#8C8B8A"]
   },
   {
     "team":"New England Patriots",
@@ -48,7 +50,8 @@
     "cap":19.95,
     "FCI":624.70,
     "FCI_pct_change":2.2,
-    "abbr": "ne"
+    "abbr": "ne",
+    "colors": ["#0D254C", "#C80815", "#D6D6D6"]
   },
   {
     "team":"Washington Redskins",
@@ -65,7 +68,8 @@
     "cap":30.00,
     "FCI":597.51,
     "FCI_pct_change":1.3,
-    "abbr": "was"
+    "abbr": "was",
+    "colors": ["#773141", "#FFB612"]
   },
   {
     "team":"Chicago Bears",
@@ -82,7 +86,8 @@
     "cap":23.00,
     "FCI":596.76,
     "FCI_pct_change":3.3,
-    "abbr": "chi"
+    "abbr": "chi",
+    "colors": ["#03202F", "#DD4814"]
   },
   {
     "team":"New York Giants",
@@ -99,7 +104,8 @@
     "cap":25.00,
     "FCI":582.76,
     "FCI_pct_change":0.0,
-    "abbr": "nyg"
+    "abbr": "nyg",
+    "colors": ["#192F6B", "#CA001A", "#808080"]
   },
   {
     "team":"New York Jets",
@@ -116,7 +122,8 @@
     "cap":20.00,
     "FCI":553.63,
     "FCI_pct_change":-4.1,
-    "abbr": "nyj"
+    "abbr": "nyj",
+    "colors": ["#0C371D"]
   },
   {
     "team":"Baltimore Ravens",
@@ -133,7 +140,8 @@
     "cap":20.00,
     "FCI":547.26,
     "FCI_pct_change":0.0,
-    "abbr": "bal"
+    "abbr": "bal",
+    "colors": ["#280353", "#000000", "#D0B240", "#FFFFFF"]
   },
   {
     "team":"Philadelphia Eagles",
@@ -150,7 +158,8 @@
     "cap":18.00,
     "FCI":530.76,
     "FCI_pct_change":7.9,
-    "abbr": "phi"
+    "abbr": "phi",
+    "colors": ["#003B48", "#708090", "#708090", "#C0C0C0"]
   },
   {
     "team":"Pittsburgh Steelers",
@@ -167,7 +176,8 @@
     "cap":35.00,
     "FCI":512.88,
     "FCI_pct_change":9.5,
-    "abbr": "pit"
+    "abbr": "pit",
+    "colors": ["#F2C800", "#000000"]
   },
   {
     "team":"New Orleans Saints",
@@ -184,7 +194,8 @@
     "cap":32.00,
     "FCI":507.49,
     "FCI_pct_change":9.9,
-    "abbr": "no"
+    "abbr": "no",
+    "colors": ["#D2B887"]
   },
   {
     "team":"Houston Texans",
@@ -201,7 +212,8 @@
     "cap":20.00,
     "FCI":491.11,
     "FCI_pct_change":1.8,
-    "abbr": "hou"
+    "abbr": "hou",
+    "colors": ["#02253A", "#B31B34"]
   },
   {
     "team":"Minnesota Vikings",
@@ -218,7 +230,8 @@
     "cap":25.00,
     "FCI":490.62,
     "FCI_pct_change":9.9,
-    "abbr": "min"
+    "abbr": "min",
+    "colors": ["#4F2682", "#FFC52F"]
   },
   {
     "team":"Green Bay Packers",
@@ -235,7 +248,8 @@
     "cap":17.95,
     "FCI":486.82,
     "FCI_pct_change":4.4,
-    "abbr": "gb"
+    "abbr": "gb",
+    "colors": ["#213D30", "#FFCC00"]
   },
   {
     "team":"Denver Broncos",
@@ -252,7 +266,8 @@
     "cap":19.95,
     "FCI":482.22,
     "FCI_pct_change":5.2,
-    "abbr": "den"
+    "abbr": "den",
+    "colors": ["#FB4F14", "#002244"]
   },
   {
     "team":"NFL AVERAGE",
@@ -269,8 +284,8 @@
     "cap":23.21,
     "FCI":479.11,
     "FCI_pct_change":4.4,
-    "abbr": "nfl"
-  },
+    "abbr": "nfl",
+    "colors": ["black"]  },
   {
     "team":"San Diego Chargers",
     "avg_ticket":84.55,
@@ -286,7 +301,8 @@
     "cap":19.99,
     "FCI":478.19,
     "FCI_pct_change":-0.2,
-    "abbr": "sd"
+    "abbr": "sd",
+    "colors": ["#5B92E5", "#08214A", "#EEC607"]
   },
   {
     "team":"Seattle Seahawks",
@@ -303,7 +319,8 @@
     "cap":18.00,
     "FCI":472.10,
     "FCI_pct_change":8.8,
-    "abbr": "sea"
+    "abbr": "sea",
+    "colors": ["#4EAE47", "#06192E", "#ACB6BC"]
   },
   {
     "team":"Indianapolis Colts",
@@ -320,7 +337,8 @@
     "cap":18.00,
     "FCI":458.27,
     "FCI_pct_change":0.0,
-    "abbr": "ind"
+    "abbr": "ind",
+    "colors": ["#003B7B"]
   },
   {
     "team":"Atlanta Falcons",
@@ -337,7 +355,8 @@
     "cap":20.00,
     "FCI":437.33,
     "FCI_pct_change":-4.3,
-    "abbr": "atl"
+    "abbr": "atl",
+    "colors": ["#BD0D18", "#000000", "#FFFFFF", "#DCE0E5"]
   },
   {
     "team":"Arizona Cardinals",
@@ -354,7 +373,8 @@
     "cap":20.00,
     "FCI":436.09,
     "FCI_pct_change":5.3,
-    "abbr": "ari"
+    "abbr": "ari",
+    "colors": ["#870619", "#000000", "#FFFFFF"]
   },
   {
     "team":"St. Louis Rams",
@@ -371,7 +391,8 @@
     "cap":28.00,
     "FCI":427.44,
     "FCI_pct_change":-1.7,
-    "abbr": "stl"
+    "abbr": "stl",
+    "colors": ["#13264B", "#C9AF74"]
   },
   {
     "team":"Oakland Raiders",
@@ -388,7 +409,8 @@
     "cap":25.00,
     "FCI":420.70,
     "FCI_pct_change":4.7,
-    "abbr": "oak"
+    "abbr": "oak",
+    "colors": ["#C4C8CB", "#000000"]
   },
   {
     "team":"Kansas City Chiefs",
@@ -405,7 +427,8 @@
     "cap":29.99,
     "FCI":419.50,
     "FCI_pct_change":12.0,
-    "abbr": "kc"
+    "abbr": "kc",
+    "colors": ["#B20032", "#F2C800"]
   },
   {
     "team":"Detroit Lions",
@@ -422,7 +445,8 @@
     "cap":25.00,
     "FCI":411.94,
     "FCI_pct_change":5.0,
-    "abbr": "det"
+    "abbr": "det",
+    "colors": ["#006DB0", "#C5C7CF"]
   },
   {
     "team":"Cincinnati Bengals",
@@ -439,7 +463,8 @@
     "cap":20.00,
     "FCI":411.04,
     "FCI_pct_change":5.2,
-    "abbr": "cin"
+    "abbr": "cin",
+    "colors": ["#FB4F14", "#000000"]
   },
   {
     "team":"Carolina Panthers",
@@ -456,7 +481,8 @@
     "cap":22.00,
     "FCI":404.78,
     "FCI_pct_change":10.8,
-    "abbr": "car"
+    "abbr": "car",
+    "colors": ["#0088CE","#A5ACAF","#FFFFFF","#000000"]
   },
   {
     "team":"Tennessee Titans",
@@ -473,7 +499,8 @@
     "cap":25.00,
     "FCI":404.58,
     "FCI_pct_change":2.9,
-    "abbr": "ten"
+    "abbr": "ten",
+    "colors": ["#648FCC", "#000080", "#FF0000"]
   },
   {
     "team":"Miami Dolphins",
@@ -490,7 +517,8 @@
     "cap":25.99,
     "FCI":398.12,
     "FCI_pct_change":-2.8,
-    "abbr": "mia"
+    "abbr": "mia",
+    "colors": ["#008D97", "#F5811F", "#015679"]
   },
   {
     "team":"Tampa Bay Buccaneers",
@@ -507,7 +535,8 @@
     "cap":28.00,
     "FCI":388.36,
     "FCI_pct_change":5.9,
-    "abbr": "tb"
+    "abbr": "tb",
+    "colors": ["#D60A0B", "#89765F"]
   },
   {
     "team":"Buffalo Bills",
@@ -524,7 +553,8 @@
     "cap":25.00,
     "FCI":383.05,
     "FCI_pct_change":4.7,
-    "abbr": "buf"
+    "abbr": "buf",
+    "colors": ["#C60C30","#FFFFFF","#00338D"]
   },
   {
     "team":"Cleveland Browns",
@@ -541,7 +571,8 @@
     "cap":25.00,
     "FCI":348.80,
     "FCI_pct_change":1.5,
-    "abbr": "cle"
+    "abbr": "cle",
+    "colors": ["#E34912", "#26201E"]
   },
   {
     "team":"Jacksonville Jaguars",
@@ -558,6 +589,7 @@
     "cap":20.00,
     "FCI":345.58,
     "FCI_pct_change":-1.5,
-    "abbr": "jax"
+    "abbr": "jax",
+    "colors": ["#007198", "#D0B239"]
   }
 ]
